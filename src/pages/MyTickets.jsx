@@ -20,13 +20,22 @@ const MyTickets = () => {
       
       if (response.data.success) {
         const fetchedTickets = response.data.tickets;
-        setTickets(fetchedTickets);
+        // Normalize shape so UI always has eventName, date, time, venue
+        const normalized = fetchedTickets.map((t) => ({
+          ...t,
+          eventName: t.event?.name || t.eventName,
+          date: t.event?.date || t.date,
+          time: t.event?.time || t.time,
+          venue: t.event?.venue || t.venue,
+          price: t.price,
+        }));
+        setTickets(normalized);
         // Generate QR images for each ticket with rich payload
         const entries = await Promise.all(
-          fetchedTickets.map(async (ticket) => {
+          normalized.map(async (ticket) => {
             const payload = JSON.stringify({
               id: ticket.id,
-              eventId: ticket.eventId || ticket.event_id,
+              eventId: ticket.event?.id || ticket.eventId || ticket.event_id,
               eventName: ticket.eventName,
               seatNumber: ticket.seatNumber,
               date: ticket.date,
@@ -168,16 +177,23 @@ const MyTickets = () => {
 
                 {/* Ticket Content */}
                 <div className="p-4 space-y-3">
-                  {/* Seat and Time */}
-                  <div className="space-y-2 text-sm">
+                  {/* Booking Details */}
+                  <div className="space-y-1 text-sm">
                     <div className="flex items-center gap-2">
-                      <Users className="text-gray-500" size={14} />
-                      <span className="text-gray-600">Seat {ticket.seatNumber}</span>
+                      <Calendar className="text-gray-500" size={14} />
+                      <span className="text-gray-600">{formatDate(ticket.date)}</span>
                     </div>
-                    
                     <div className="flex items-center gap-2">
                       <Clock className="text-gray-500" size={14} />
                       <span className="text-gray-600">{ticket.time}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="text-gray-500" size={14} />
+                      <span className="text-gray-600">{ticket.venue}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="text-gray-500" size={14} />
+                      <span className="text-gray-600">Seat {ticket.seatNumber}</span>
                     </div>
                   </div>
 
