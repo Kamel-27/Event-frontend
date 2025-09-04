@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Home from "./pages/home.jsx";
+import Home from "./pages/Home.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/Register.jsx";
 import Events from "./pages/Events.jsx";
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          
+
           {/* Admin Routes */}
           <Route
             path="/events"
@@ -40,32 +40,32 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-                     <Route
-             path="/edit-event/:id"
-             element={
-               <ProtectedRoute>
-                 <EditEvent />
-               </ProtectedRoute>
-             }
-           />
-           
-           <Route
-             path="/analytics"
-             element={
-               <ProtectedRoute>
-                 <Analytics />
-               </ProtectedRoute>
-             }
-           />
-           <Route
-             path="/attendee-insights"
-             element={
-               <ProtectedRoute>
-                 <AttendeeInsights />
-               </ProtectedRoute>
-             }
-           />
-          
+          <Route
+            path="/edit-event/:id"
+            element={
+              <ProtectedRoute>
+                <EditEvent />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/analytics"
+            element={
+              <ProtectedRoute>
+                <Analytics />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/attendee-insights"
+            element={
+              <ProtectedRoute>
+                <AttendeeInsights />
+              </ProtectedRoute>
+            }
+          />
+
           {/* User Routes */}
           <Route
             path="/event/:id"
@@ -91,7 +91,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          
+
           <Route
             path="*"
             element={<h1 className="text-center mt-20">404 Not Found</h1>}
