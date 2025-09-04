@@ -22,9 +22,15 @@ export const AuthProvider = ({ children }) => {
   const checkAuthStatus = async () => {
     try {
       const userData = localStorage.getItem('user');
+      const token = localStorage.getItem('token');
       if (userData) {
         const parsedUser = JSON.parse(userData);
         setUser(parsedUser);
+      }
+      if (!userData && token) {
+        // optional: try to fetch profile to hydrate user when only token exists
+        // const response = await getProfile();
+        // if (response.success) setUser(response.user);
       }
       
       // Optionally verify token with backend
@@ -50,6 +56,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
   };
 
   const updateUser = (userData) => {

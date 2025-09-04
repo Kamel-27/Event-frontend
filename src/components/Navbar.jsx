@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { logout } from "../utils/logout";
 import {
   Plus,
@@ -39,12 +40,12 @@ const Sidebar = () => {
         </div>
 
         {/* Button */}
-        <a href="/add-event" className="block w-full">
+        <Link to="/add-event" className="block w-full">
           <button className="w-full bg-[#0df38a] text-black hover:bg-[#0bc775] transition-colors mb-8 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg font-medium shadow-md">
             <Plus className="w-5 h-5" />
             Add Quick Event
           </button>
-        </a>
+        </Link>
 
         {/* Sections */}
         <div className="space-y-6 text-sm">
@@ -55,36 +56,36 @@ const Sidebar = () => {
               <ChevronDown className="w-4 h-4" />
             </div>
             <nav className="space-y-1">
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-[#1a1a1a] hover:text-[#0df38a] transition-colors"
               >
                 <BarChart3 className="w-4 h-4" /> Dashboard
-              </a>
-              <a
-                href="/events"
+              </Link>
+              <Link
+                to="/events"
                 className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-[#1a1a1a] hover:text-[#0df38a]"
               >
                 <Calendar className="w-4 h-4" /> Manage Events
-              </a>
-              <a
-                href="/add-event"
+              </Link>
+              <Link
+                to="/add-event"
                 className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-[#1a1a1a] hover:text-[#0df38a]"
               >
                 <CreditCard className="w-4 h-4" /> Booking & Tickets
-              </a>
-              <a
-                href="/attendee-insights"
+              </Link>
+              <Link
+                to="/attendee-insights"
                 className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-[#1a1a1a] hover:text-[#0df38a]"
               >
                 <Users className="w-4 h-4" /> Attendee Insights
-              </a>
-              <a
-                href="/analytics"
+              </Link>
+              <Link
+                to="/analytics"
                 className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-[#1a1a1a] hover:text-[#0df38a]"
               >
                 <BarChart3 className="w-4 h-4" /> Analytics & Reports
-              </a>
+              </Link>
             </nav>
           </div>
 

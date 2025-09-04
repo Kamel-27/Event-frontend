@@ -20,7 +20,10 @@ export default function LoginForm() {
       const response = await login({ email, password });
       
       if (response.data.success) {
-        // Store user data in context and localStorage
+        // Store token and user data
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+        }
         authLogin(response.data.user);
         alert("✅ Login successful!");
         

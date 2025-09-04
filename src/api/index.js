@@ -5,6 +5,15 @@ const API = axios.create({
   withCredentials: true,
 });
 
+// Attach Authorization header if token stored
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 // Auth API functions
 export const getProfile = async () => {
   const { data } = await API.get("/auth/profile");
