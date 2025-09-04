@@ -89,19 +89,16 @@ const BookEvent = () => {
   const handleBuyNow = async () => {
     setIsProcessing(true);
     try {
-      // First update user profile with the information
-      const updateUserResponse = await fetch('http://localhost:5000/api/auth/update-profile', {
+      // First update user profile with the information (using API base + auth)
+      await fetch(`${import.meta.env.VITE_API_URL || 'https://event-backend-kohl-nine.vercel.app/api'}/auth/update-profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token') || ''}`,
         },
         credentials: 'include',
         body: JSON.stringify(userInfo)
       });
-
-      if (!updateUserResponse.ok) {
-        console.error('Failed to update user profile');
-      }
 
       // Then book the tickets
       const bookingPromises = selectedSeats.map(seatNumber => 

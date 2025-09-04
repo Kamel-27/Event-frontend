@@ -274,20 +274,7 @@ const EventDetails = () => {
             </div>
           </div>
 
-          {/* QR Code for Payments */}
-          <div className="mt-8 bg-white rounded-xl shadow-lg p-6 text-center">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">QR Code for Payments</h3>
-            <div className="bg-gray-100 rounded-lg p-8 inline-block">
-              <div className="w-32 h-32 bg-white rounded-lg flex items-center justify-center">
-                <div className="w-24 h-24 bg-black rounded-lg flex items-center justify-center">
-                  <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center">
-                    <div className="w-8 h-8 bg-black rounded-lg"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p className="text-sm text-gray-600 mt-4">Scan QR code for easy payments</p>
-          </div>
+          {/* Removed: QR Code for Payments */}
 
           {/* Action Buttons */}
           <div className="mt-8 flex justify-center gap-4">
