@@ -14,12 +14,12 @@ const Layout = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full min-h-[90vh] bg-gray-100 rounded-2xl shadow-lg border-16 border-black flex overflow-hidden relative">
+      <div className="w-full min-h-screen bg-gray-100 rounded-2xl shadow-lg border-16 border-black flex overflow-hidden relative">
         {/* Sidebar */}
         <div
           className={`fixed md:sticky md:top-0 top-0 left-0 h-full md:h-screen w-64 bg-black text-white transform ${
             open ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 transition-transform duration-300 ease-in-out z-30`}
+          } md:translate-x-0 transition-transform duration-300 ease-in-out z-30 overflow-y-auto`}
         >
           <SidebarComponent />
         </div>
